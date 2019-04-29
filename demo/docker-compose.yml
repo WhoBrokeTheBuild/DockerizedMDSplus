@@ -1,0 +1,26 @@
+version: "3.3"
+services:
+  tree_server:
+    image: "whobrokethebuild/mdsplus:tree-server"
+    environment:
+      - "slwtest_path=/trees/slwtest"
+      - "UID=${UID}"
+      - "GID=${GID}"
+    volumes:
+      - /home/slwalsh/slwtest:/trees/slwtest
+    ports:
+      - "8000:8000"
+  #dispatch_server:
+  #  network_mode: "host"
+  #  image: "whobrokethebuild/mdsplus:dispatch-server"
+  #  env_file:
+  #    - default.env
+  #  ports:
+  #    - "8100:8100"
+  #daq_server:k
+  #  network_mode: "host"
+  #  image: "whobrokethebuild/mdsplus:daq-server"
+  #  env_file:
+  #    - default.env
+  #  ports:
+  #    - "8200:8200"
