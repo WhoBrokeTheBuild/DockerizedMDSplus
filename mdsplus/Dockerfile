@@ -10,6 +10,10 @@ RUN apk add --update wget bash py-numpy python \
     && echo "http://www.mdsplus.org/dist/alpine/3.6/${MDSPLUS_FLAVOR}" >> /etc/apk/repositories \
     && apk update \
     && (test "${MDSPLUS_FLAVOR} == alpha" \
-        && apk add --update mdsplus-alpha-kernel mdsplus-alpha-python \
-        || apk add --update mdsplus-kernel mdsplus-python) \
+        && apk add --update mdsplus-alpha-kernel mdsplus-alpha-python mdsplus-alpha-motif \
+        || apk add --update mdsplus-kernel mdsplus-python mdsplus-motif) \
     && rm -rf /var/cache/apk/*
+
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

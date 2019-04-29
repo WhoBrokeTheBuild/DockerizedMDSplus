@@ -3,11 +3,12 @@ services:
   tree_server:
     image: "whobrokethebuild/mdsplus:tree-server"
     environment:
-      - "slwtest_path=/trees/slwtest"
+      - "slwtest_path=/trees/~t/"
+      - "arduino_path=/trees/~t/"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
-      - /home/slwalsh/slwtest:/trees/slwtest
+      - ./trees:/trees
     ports:
       - "8000:8000"
   #dispatch_server:
