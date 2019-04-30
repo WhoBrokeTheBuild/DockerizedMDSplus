@@ -10,4 +10,4 @@ echo "Adding hostuser $UID:$GID"
 addgroup -g $GID hostgroup
 adduser -D -u $UID -G hostgroup hostuser
 
-mdsip -s -p 8100
+mdsip -s -p 8200

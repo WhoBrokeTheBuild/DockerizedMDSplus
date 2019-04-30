@@ -14,6 +14,7 @@ RUN apk add --update wget bash py-numpy python \
         || apk add --update mdsplus-kernel mdsplus-python mdsplus-motif) \
     && rm -rf /var/cache/apk/*
 
+COPY envsyms /usr/local/mdsplus/local/envsyms
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
