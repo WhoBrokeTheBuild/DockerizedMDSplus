@@ -6,7 +6,7 @@ REPO = mdsplus
 all: tree-server daq-server dispatch-server
 
 .PHONY: mdsplus
-mdsplus: mdsplus-alpha mdsplus-stable
+mdsplus: mdsplus-alpha
 
 .PHONY: mdsplus-alpha
 mdsplus-alpha:
@@ -22,7 +22,7 @@ mdsplus-stable:
 		-t ${USER}/${REPO}:stable .
 
 .PHONY: tree-server
-tree-server: tree-server-alpha tree-server-stable
+tree-server: tree-server-alpha
 
 .PHONY: tree-server-alpha
 tree-server-alpha: mdsplus-alpha
@@ -38,7 +38,7 @@ tree-server-stable: mdsplus-stable
 		-t ${USER}/${REPO}:tree-server-stable .
 
 .PHONY: daq-server
-daq-server: daq-server-alpha daq-server-stable
+daq-server: daq-server-alpha
 
 .PHONY: daq-server-alpha
 daq-server-alpha: mdsplus-alpha
@@ -54,7 +54,7 @@ daq-server-stable: mdsplus-stable
 		-t ${USER}/${REPO}:daq-server-stable .
 
 .PHONY: dispatch-server
-dispatch-server: dispatch-server-alpha dispatch-server-stable
+dispatch-server: dispatch-server-alpha
 
 .PHONY: dispatch-server-alpha
 dispatch-server-alpha: mdsplus-alpha
