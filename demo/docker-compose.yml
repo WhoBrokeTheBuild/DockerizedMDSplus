@@ -10,23 +10,42 @@ services:
     volumes:
       - ./trees:/trees
       - ./pydevices:/pydevices
+      - ./scripts:/scripts
     ports:
       - "8000:8000"
   dispatch_server:
-    image: "whobrokethebuild/mdsplus:dispatch-server"
+    image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
       - trees.env
     environment:
+      - "MDSIP_PORT=8101"
       - "UID=${UID}"
       - "GID=${GID}"
+    volumes:
+      - ./scripts:/scripts
     ports:
-      - "8100:8100"
+      - "8101:8101"
   daq_server:
-    image: "whobrokethebuild/mdsplus:daq-server"
+    image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
       - trees.env
     environment:
+      - "MDSIP_PORT=8102"
       - "UID=${UID}"
       - "GID=${GID}"
+    volumes:
+      - ./scripts:/scripts
     ports:
-      - "8200:8200"
+      - "8102:8102"
+  monitor_server:
+    image: "whobrokethebuild/mdsplus:mdsip-server"
+    env_file:
+      - trees.env
+    environment:
+      - "MDSIP_PORT=8103"
+      - "UID=${UID}"
+      - "GID=${GID}"
+    volumes:
+      - ./scripts:/scripts
+    ports:
+      - "8103:8103"

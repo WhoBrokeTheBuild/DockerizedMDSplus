@@ -11,17 +11,19 @@ class WAVEDEVICE(MDSplus.Device):
 
     parts = [
         {'path': ':COMMENT','type':'text','options':('no_write_shot',)},
-        {'path': ':METHOD','type':'text','options':('no_write_shot',)},
+        {'path': ':METHOD','type':'text','value':'sine','options':('no_write_shot',)},
         {'path': ':RUNNING','type':'numeric','options':('no_write_model',)},
-        {'path': ':DATA','type':'signal','options':('no_write_model','write_shot',)},
+        {'path': ':WAVE_DATA','type':'signal','options':('no_write_model','write_shot',)},
         {'path': ':MAX_SEGMENTS', 'type':'numeric','value':100,'options':('no_write_shot',)},
         {'path': ':SEG_LENGTH', 'type':'numeric','value':5,'options':('no_write_shot',)},
         {'path': ':STREAM_EVENT','type':'text','value':'WAVE_STREAM','options':('no_write_shot')},
+        {'path': ':INIT_ACTION','type':'action','valueExpr':"Action(Dispatch('S','INIT',50,None),Method(None,'INIT',head))",'options':('no_write_shot',)},
+        {'path': ':STOP_ACTION','type':'action','valueExpr':"Action(Dispatch('S','STOP',50,None),Method(None,'STOP',head))",'options':('no_write_shot',)},
     ]
 
     class Worker(threading.Thread):
         def __init__(self, dev):
-            super(WaveDevice.Worker,self).__init__(name=dev.path)
+            super(WAVEDEVICE.Worker,self).__init__(name=dev.path)
             self.dev = dev.copy()
         def run(self):
             self.dev.stream()
@@ -50,7 +52,6 @@ class WAVEDEVICE(MDSplus.Device):
         segment = 0
         start_time = time.time()
         previous_time = 0
-        self.trig_time.record = start_time
         while self.running.on and segment < max_segments:
             sample = 0
 
@@ -71,6 +72,6 @@ class WAVEDEVICE(MDSplus.Device):
                 data = data[0:sample]
             
             segment += 1
-            self.data.makeSegment(times[0], times[-1], times, data)
+            self.wave_data.makeSegment(times[0], times[-1], times, data)
             MDSplus.Event.setevent(event_name)
     STREAM=stream

@@ -3,7 +3,7 @@ USER = whobrokethebuild
 REPO = mdsplus
 
 .PHONY: all
-all: tree-server daq-server dispatch-server
+all: tree-server mdsip-server
 
 .PHONY: mdsplus
 mdsplus: mdsplus-alpha
@@ -37,34 +37,18 @@ tree-server-stable: mdsplus-stable
 		--build-arg MDSPLUS_FLAVOR=stable \
 		-t ${USER}/${REPO}:tree-server-stable .
 
-.PHONY: daq-server
-daq-server: daq-server-alpha
+.PHONY: mdsip-server
+mdsip-server: mdsip-server-alpha
 
-.PHONY: daq-server-alpha
-daq-server-alpha: mdsplus-alpha
-	cd daq-server; docker build \
+.PHONY: mdsip-server-alpha
+mdsip-server-alpha: mdsplus-alpha
+	cd mdsip-server; docker build \
 		--build-arg MDSPLUS_FLAVOR=alpha \
-		-t ${USER}/${REPO}:daq-server-alpha .
-	docker tag ${USER}/${REPO}:daq-server-alpha ${USER}/${REPO}:daq-server
+		-t ${USER}/${REPO}:mdsip-server-alpha .
+	docker tag ${USER}/${REPO}:mdsip-server-alpha ${USER}/${REPO}:mdsip-server
 
-.PHONY: daq-server-stable
-daq-server-stable: mdsplus-stable
-	cd daq-server; docker build \
+.PHONY: mdsip-server-stable
+mdsip-server-stable: mdsplus-stable
+	cd mdsip-server; docker build \
 		--build-arg MDSPLUS_FLAVOR=stable \
-		-t ${USER}/${REPO}:daq-server-stable .
-
-.PHONY: dispatch-server
-dispatch-server: dispatch-server-alpha
-
-.PHONY: dispatch-server-alpha
-dispatch-server-alpha: mdsplus-alpha
-	cd dispatch-server; docker build \
-		--build-arg MDSPLUS_FLAVOR=alpha \
-		-t ${USER}/${REPO}:dispatch-server-alpha .
-	docker tag ${USER}/${REPO}:dispatch-server-alpha ${USER}/${REPO}:dispatch-server
-
-.PHONY: dispatch-server-stable
-dispatch-server-stable: mdsplus-stable
-	cd dispatch-server; docker build \
-		--build-arg MDSPLUS_FLAVOR=stable \
-		-t ${USER}/${REPO}:dispatch-server-stable .
+		-t ${USER}/${REPO}:mdsip-server-stable .

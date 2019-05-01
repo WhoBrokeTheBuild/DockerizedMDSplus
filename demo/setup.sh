@@ -3,7 +3,7 @@
 DIR=$(realpath "$(dirname ${0})") 
 
 NETWORK=demo_default
-DOCKER_FLAGS="--network=$NETWORK --env-file=$DIR/trees.env --volume=$DIR/pydevices:/pydevices"
+DOCKER_FLAGS="--network=$NETWORK --env-file=$DIR/trees.env --volume=$DIR/scripts:/scripts --volume=$DIR/pydevices:/pydevices"
 
 xhost +local:root
 
@@ -33,15 +33,15 @@ function demo-mdstcl() {
 
 function demo-dwscope() {
     NAME=$(demo-next-name dwscope)
-    docker run --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest dwscope "$@"
+    docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest dwscope "$@"
 }
 
 function demo-traverser() {
     NAME=$(demo-next-name traverser)
-    docker run --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest traverser "$@"
+    docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest traverser "$@"
 }
 
 function demo-actmon() {
     NAME=$(demo-next-name actmon)
-    docker run --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest actmon "$@"
+    docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest actmon "$@"
 }

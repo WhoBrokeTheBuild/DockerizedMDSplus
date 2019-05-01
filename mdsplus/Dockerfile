@@ -19,4 +19,6 @@ COPY setup.sh /usr/local/mdsplus/setup.sh
 COPY setup.csh /usr/local/mdsplus/setup.csh
 COPY entrypoint.sh /entrypoint.sh
 
+EXPOSE 8000-9000
+
 ENTRYPOINT ["/entrypoint.sh"]
