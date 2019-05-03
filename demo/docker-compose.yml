@@ -4,7 +4,6 @@ services:
     image: "whobrokethebuild/mdsplus:tree-server"
     environment:
       - "demo_path=/trees/~t/"
-      - "arduino_path=/trees/~t/"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
