@@ -1,8 +1,8 @@
 edit demo /new
-add node wave_1 /model=WaveDevice
-add node wave_2 /model=WaveDevice
-add node wave_3 /model=WaveDevice
-add node wave_4 /model=WaveDevice
+add node wave_1 /model=WAVEDEVICE
+add node wave_2 /model=WAVEDEVICE
+add node wave_3 /model=WAVEDEVICE
+add node wave_4 /model=WAVEDEVICE
 put wave_1:wave_method """sine"""
 put wave_2:wave_method """cosine"""
 put wave_3:wave_method """triangle"""

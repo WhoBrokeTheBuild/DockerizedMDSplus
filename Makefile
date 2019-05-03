@@ -1,7 +1,7 @@
 
 USER    := whobrokethebuild
 REPO    := mdsplus
-VERSION := $(shell mdstcl show version | grep 'version:' | cut -d ' ' -f 3)
+VERSION ?= $(shell mdstcl show version | grep 'version:' | cut -d ' ' -f 3)
 
 .PHONY: all
 all: tree-server mdsip-server
