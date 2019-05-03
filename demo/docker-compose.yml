@@ -17,11 +17,13 @@ services:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
       - trees.env
+      - servers.env
     environment:
       - "MDSIP_PORT=8101"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
+      - ./pydevices:/pydevices
       - ./scripts:/scripts
     ports:
       - "8101:8101"
@@ -29,23 +31,27 @@ services:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
       - trees.env
+      - servers.env
     environment:
       - "MDSIP_PORT=8102"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
+      - ./pydevices:/pydevices
       - ./scripts:/scripts
     ports:
       - "8102:8102"
-  monitor_server:
+  analysis_server:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
       - trees.env
+      - servers.env
     environment:
       - "MDSIP_PORT=8103"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
+      - ./pydevices:/pydevices
       - ./scripts:/scripts
     ports:
       - "8103:8103"

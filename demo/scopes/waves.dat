@@ -1,0 +1,31 @@
+Scope.geometry: 836x852+2524+531
+Scope.title: "MDS Scope"
+Scope.icon_name: "Scope"
+Scope.title_event: 
+Scope.print_file: dwscope.ps
+Scope.print_event: 
+Scope.print_portrait: 0
+Scope.print_window_title: 0
+Scope.printer: To file
+Scope.font: -urw-century schoolbook l-regular-r-normal--17-120-100-100-p-94-iso8859-1
+Scope.columns: 1
+Scope.global_1_1.experiment: demo
+Scope.global_1_1.shot: 0
+Scope.global_1_1.global_defaults: -385
+Scope.rows_in_column_1: 4
+
+Scope.plot_1_1.height: 196
+Scope.plot_1_1.y: wave_1:wave_data
+Scope.plot_1_1.global_defaults: -2049
+
+Scope.plot_2_1.height: 196
+Scope.plot_2_1.y: wave_2:wave_data
+Scope.plot_2_1.global_defaults: -2049
+
+Scope.plot_3_1.height: 196
+Scope.plot_3_1.y: wave_3:wave_data
+Scope.plot_3_1.global_defaults: -2049
+
+Scope.plot_4_1.height: 198
+Scope.plot_4_1.y: wave_4:wave_data
+Scope.plot_4_1.global_defaults: -2049
