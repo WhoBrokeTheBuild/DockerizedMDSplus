@@ -1,6 +1,6 @@
 # Dockerized MDSplus
 
-[Docker Hub](https://hub.docker.com/r/whobrokethebuild/mdsplus)
+[https://hub.docker.com/r/whobrokethebuild/mdsplus](https://hub.docker.com/r/whobrokethebuild/mdsplus)
 
 ## How to use these images
 These images are provided as a means to use the MDSplus data management software in several different ways. The base mdsplus image is to be used for tools or as a base for images built on it. The tree-server image is to be used for creating multi-client mdsip servers, mostly used for serving tree files. The mdsip server is to be used for single-client mdsip servers, used for running tasks that should not be done in parallel.
@@ -14,7 +14,7 @@ docker run -d --name scope --rm -it --env=DISPLAY --env=QT_X11_NO_MITSHM=1 \
 ```
 
 ### The tree-server image
-This image extends the base mdsplus image, with the addition of a simple inetd configuration for serving multiple connections. To use it, map port 8000 to your host and run the normal MDSplus applications against it, or built it as part of a compose and have the other applications reference it. Trees should be mounted into `/trees/`, and environment variables specifying that path should be passed in as well.
+This image extends the base mdsplus image, with the addition of a simple inetd configuration for serving multiple connections. To use it, map port 8000 to your host and run the normal MDSplus applications against it, or built it as part of a compose and have the other applications reference it. Trees should be mounted into `/trees/`, and the default_tree_path is configured to `/trees/~t/` by default.
 *Note* As this server reads/writes files likely mounted to the host computer, you must specify a UID and GID for the server to map incoming users to.
 
 ```
@@ -23,7 +23,6 @@ services:
   tree_server:
     image: "whobrokethebuild/mdsplus:tree-server"
     environment:
-      - "demo_path=/trees/~t/"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
@@ -42,7 +41,7 @@ services:
   dispatch_server:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     environment:
-      - "demo_path=tree_server::"
+      - "default_tree_path=tree_server::"
     environment:
       - "MDSIP_PORT=8101"
       - "UID=${UID}"
