@@ -3,7 +3,7 @@
 DIR=$(realpath "$(dirname ${0})") 
 
 NETWORK=demo_default
-DOCKER_FLAGS="--network=$NETWORK --env-file=$DIR/trees.env --env-file=$DIR/servers.env --volume=$DIR/scripts:/scripts --volume=$DIR/pydevices:/pydevices"
+DOCKER_FLAGS="--network=$NETWORK --env-file=$DIR/config.env --volume=$DIR/scripts:/scripts --volume=$DIR/pydevices:/pydevices"
 
 xhost +local:root
 

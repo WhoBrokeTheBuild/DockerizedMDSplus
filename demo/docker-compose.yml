@@ -3,7 +3,6 @@ services:
   tree_server:
     image: "whobrokethebuild/mdsplus:tree-server"
     environment:
-      - "demo_path=/trees/~t/"
       - "UID=${UID}"
       - "GID=${GID}"
     volumes:
@@ -15,8 +14,7 @@ services:
   dispatch_server:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
-      - trees.env
-      - servers.env
+      - config.env
     environment:
       - "MDSIP_PORT=8101"
       - "UID=${UID}"
@@ -29,8 +27,7 @@ services:
   daq_server:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
-      - trees.env
-      - servers.env
+      - config.env
     environment:
       - "MDSIP_PORT=8102"
       - "UID=${UID}"
@@ -43,8 +40,7 @@ services:
   analysis_server:
     image: "whobrokethebuild/mdsplus:mdsip-server"
     env_file:
-      - trees.env
-      - servers.env
+      - config.env
     environment:
       - "MDSIP_PORT=8103"
       - "UID=${UID}"

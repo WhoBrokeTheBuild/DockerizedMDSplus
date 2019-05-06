@@ -49,3 +49,14 @@ push:
 	docker push ${USER}/${REPO}:${VERSION}
 	docker push ${USER}/${REPO}:${VERSION}-tree-server
 	docker push ${USER}/${REPO}:${VERSION}-mdsip-server
+
+rmi:
+	docker rmi ${USER}/${REPO}:latest \
+		${USER}/${REPO}:alpha \
+		${USER}/${REPO}:tree-server \
+		${USER}/${REPO}:tree-server-alpha \
+		${USER}/${REPO}:mdsip-server \
+		${USER}/${REPO}:mdsip-server-alpha \
+		${USER}/${REPO}:${VERSION} \
+		${USER}/${REPO}:${VERSION}-tree-server \
+		${USER}/${REPO}:${VERSION}-mdsip-server
