@@ -83,7 +83,7 @@ demo-traverser -tree demo -shot -1
 # Open actmon
 demo-actmon -tree demo -monitor event:demo_actmon
 # Open scope, data file is mounted to /scopes/wave.dat
-demo-dwscope -def /scopes/wave.dat
+demo-dwscope -def /scopes/waves.dat
 # Take a shot
 demo-mdstcl dispatch /command /server=dispatch_server:8101 """@/scripts/shot.tcl"""
 # Finish a shot

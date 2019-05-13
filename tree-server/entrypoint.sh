@@ -3,6 +3,10 @@ set -e
 
 . /etc/profile.d/mdsplus.sh
 
+if [[ "x$default_tree_path" == "x" ]]; then
+    export default_tree_path="/trees/~t/"
+fi
+
 deluser hostuser >/dev/null 2>&1 || true
 delgroup hostgroup >/dev/null 2>&1 || true
 

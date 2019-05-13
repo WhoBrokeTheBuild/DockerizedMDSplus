@@ -36,3 +36,4 @@ put /extend wave_4:stop_action
 BUILD_ACTION(BUILD_DISPATCH(2,'daq_server:8102','STORE',50,*),BUILD_METHOD(*,'STOP',wave_4))
 
 write
+
