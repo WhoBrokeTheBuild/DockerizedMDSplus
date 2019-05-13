@@ -1,6 +1,10 @@
 #!/bin/bash
 
-DIR=$(realpath "$(dirname ${0})") 
+if [[ "$0" == "" ]]; then
+    DIR=$(realpath "$(dirname $BASH_SOURCE)")
+else
+    DIR=$(realpath "$(dirname $0)")
+fi
 
 NETWORK=demo_default
 DOCKER_FLAGS="--network=$NETWORK --env-file=$DIR/config.env --volume=$DIR/scripts:/scripts --volume=$DIR/pydevices:/pydevices"
