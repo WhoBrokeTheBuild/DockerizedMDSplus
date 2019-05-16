@@ -40,9 +40,19 @@ function demo-dwscope() {
     docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) -v $DIR/scopes:/scopes --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest dwscope "$@"
 }
 
+function demo-jScope() {
+    NAME=$(demo-next-name jScope)
+    docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) -v $DIR/scopes:/scopes --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest jScope "$@"
+}
+
 function demo-traverser() {
     NAME=$(demo-next-name traverser)
     docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest traverser "$@"
+}
+
+function demo-jTraverser() {
+    NAME=$(demo-next-name jTraverser)
+    docker run -d --name="$NAME" --rm -it $(echo $DOCKER_FLAGS) --env=DISPLAY --env=QT_X11_NO_MITSHM=1 --volume=/tmp/.X11-unix:/tmp/.X11-unix:rw whobrokethebuild/mdsplus:latest jTraverser "$@"
 }
 
 function demo-actmon() {
